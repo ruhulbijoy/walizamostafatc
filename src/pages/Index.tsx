@@ -89,10 +89,20 @@ const Index = () => {
         <div className="relative z-10 text-center px-4 animate-fade-in">
           <div className="mb-8 inline-block">
             <div className="relative w-52 h-52 md:w-72 md:h-72 mx-auto">
-              {/* Glass effect frame */}
-              <div className="absolute inset-0 rounded-full glass-effect border-4 border-gold shadow-gold" />
-              <div className="w-full h-full rounded-full overflow-hidden p-2">
+              {/* Outer glow ring */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold/40 via-primary/30 to-secondary/40 blur-2xl animate-pulse" />
+              
+              {/* Glass resin ring with glossy gradient */}
+              <div className="absolute inset-0 rounded-full resin-ring" />
+              
+              {/* Inner golden border */}
+              <div className="absolute inset-0 rounded-full border-4 border-gold shadow-gold" />
+              
+              {/* Profile image with glossy overlay */}
+              <div className="relative w-full h-full rounded-full overflow-hidden p-3">
                 <img src={profileImg} alt="Waliza Mostafa" className="w-full h-full object-cover rounded-full" />
+                {/* Resin glossy reflection */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-60 resin-reflection" />
               </div>
             </div>
           </div>
@@ -299,13 +309,13 @@ const Index = () => {
           </div>
           
           <div className="flex items-center justify-center gap-6 mb-8">
-            <a href="#" className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300" aria-label="Facebook">
+            <a href="https://www.facebook.com/tasusCreationss/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300" aria-label="Facebook">
               <Facebook className="w-6 h-6 text-foreground" />
             </a>
-            <a href="#" className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300" aria-label="Instagram">
+            <a href="https://www.instagram.com/tasus_creations/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300" aria-label="Instagram">
               <Instagram className="w-6 h-6 text-foreground" />
             </a>
-            <a href="#" className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300" aria-label="YouTube">
+            <a href="http://www.youtube.com/@Tasuscreations" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300" aria-label="YouTube">
               <Youtube className="w-6 h-6 text-foreground" />
             </a>
           </div>
