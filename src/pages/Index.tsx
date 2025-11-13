@@ -8,55 +8,67 @@ import gallery5 from "@/assets/gallery-5.png";
 import gallery6 from "@/assets/gallery-6.jpg";
 import gallery7 from "@/assets/gallery-7.jpg";
 import gallery9 from "@/assets/gallery-9.jpg";
-
 const Index = () => {
-  const skills = [
-    { icon: Palette, label: "Resin Casting & Molding" },
-    { icon: Clock, label: "Resin Home Décor (Clock, Tray, Coasters, Table, Name Plate)" },
-    { icon: Flower2, label: "Flower Preservation & Dry Flower Art" },
-    { icon: Waves, label: "Geode & Ocean Theme Resin Art" },
-    { icon: Sparkles, label: "Candle & Texture Art" },
-    { icon: Frame, label: "Gypsum Art" },
-    { icon: Store, label: "Workshop Planning & Student Training" },
-    { icon: Camera, label: "Product Photography & Online Marketing" },
-  ];
-
-  const galleryImages = [
-    { src: gallery1, alt: "Resin Art 1" },
-    { src: gallery2, alt: "Resin Art 2" },
-    { src: gallery4, alt: "Resin Art 3" },
-    { src: gallery5, alt: "Resin Art 4" },
-    { src: gallery6, alt: "Resin Art 5" },
-    { src: gallery7, alt: "Resin Art 6" },
-    { src: gallery9, alt: "Resin Art 7" },
-  ];
-
-  const recognitions = [
-    "Featured on Epoxy Resin Supplier Bangladesh",
-    "Trained 100+ students nationwide",
-    "Founder of Tasu's Art & Crafts Academy",
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const skills = [{
+    icon: Palette,
+    label: "Resin Casting & Molding"
+  }, {
+    icon: Clock,
+    label: "Resin Home Décor (Clock, Tray, Coasters, Table, Name Plate)"
+  }, {
+    icon: Flower2,
+    label: "Flower Preservation & Dry Flower Art"
+  }, {
+    icon: Waves,
+    label: "Geode & Ocean Theme Resin Art"
+  }, {
+    icon: Sparkles,
+    label: "Candle & Texture Art"
+  }, {
+    icon: Frame,
+    label: "Gypsum Art"
+  }, {
+    icon: Store,
+    label: "Workshop Planning & Student Training"
+  }, {
+    icon: Camera,
+    label: "Product Photography & Online Marketing"
+  }];
+  const galleryImages = [{
+    src: gallery1,
+    alt: "Resin Art 1"
+  }, {
+    src: gallery2,
+    alt: "Resin Art 2"
+  }, {
+    src: gallery4,
+    alt: "Resin Art 3"
+  }, {
+    src: gallery5,
+    alt: "Resin Art 4"
+  }, {
+    src: gallery6,
+    alt: "Resin Art 5"
+  }, {
+    src: gallery7,
+    alt: "Resin Art 6"
+  }, {
+    src: gallery9,
+    alt: "Resin Art 7"
+  }];
+  const recognitions = ["Featured on Epoxy Resin Supplier Bangladesh", "Trained 100+ students nationwide", "Founder of Tasu's Art & Crafts Academy"];
+  return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 opacity-90"
-          style={{
-            background: 'linear-gradient(135deg, hsl(333 72% 84%), hsl(270 40% 77%))',
-          }}
-        />
+        <div className="absolute inset-0 opacity-90" style={{
+        background: 'linear-gradient(135deg, hsl(333 72% 84%), hsl(270 40% 77%))'
+      }} />
         <div className="absolute inset-0 resin-texture" />
         
         <div className="relative z-10 text-center px-4 animate-fade-in">
           <div className="mb-8 inline-block">
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-gold shadow-gold mx-auto">
-              <img 
-                src={profileImg} 
-                alt="Waliza Mostafa" 
-                className="w-full h-full object-cover"
-              />
+              <img src={profileImg} alt="Waliza Mostafa" className="w-full h-full object-cover" />
             </div>
           </div>
           
@@ -69,7 +81,7 @@ const Index = () => {
           </p>
           
           <p className="text-xl md:text-2xl font-script text-accent font-semibold">
-            Think Different. Think Resin.
+            Think Different, Build Different.
           </p>
           
           <div className="mt-12 animate-bounce">
@@ -83,11 +95,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
-              <img 
-                src={profileImg} 
-                alt="Waliza Mostafa" 
-                className="rounded-2xl shadow-soft w-full max-w-md mx-auto"
-              />
+              <img src={profileImg} alt="Waliza Mostafa" className="rounded-2xl shadow-soft w-full max-w-md mx-auto" />
             </div>
             
             <div className="animate-fade-in">
@@ -118,12 +126,9 @@ const Index = () => {
 
       {/* Skills Section */}
       <section className="py-20 px-4 md:px-8 relative overflow-hidden">
-        <div 
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: 'linear-gradient(180deg, hsl(333 72% 94%), hsl(270 40% 90%))',
-          }}
-        />
+        <div className="absolute inset-0 opacity-30" style={{
+        background: 'linear-gradient(180deg, hsl(333 72% 94%), hsl(270 40% 90%))'
+      }} />
         <div className="absolute inset-0 resin-texture" />
         
         <div className="max-w-7xl mx-auto relative z-10">
@@ -132,18 +137,14 @@ const Index = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skills.map((skill, index) => (
-              <div
-                key={index}
-                className="glass-effect rounded-2xl p-6 gold-shimmer hover:shadow-gold transition-all duration-300 hover:scale-105 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+            {skills.map((skill, index) => <div key={index} className="glass-effect rounded-2xl p-6 gold-shimmer hover:shadow-gold transition-all duration-300 hover:scale-105 animate-fade-in" style={{
+            animationDelay: `${index * 0.1}s`
+          }}>
                 <skill.icon className="w-12 h-12 text-gold mb-4" />
                 <p className="text-foreground font-medium text-lg">
                   {skill.label}
                 </p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -156,24 +157,16 @@ const Index = () => {
           </h2>
           
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="break-inside-avoid animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+            {galleryImages.map((image, index) => <div key={index} className="break-inside-avoid animate-fade-in" style={{
+            animationDelay: `${index * 0.1}s`
+          }}>
                 <div className="relative overflow-hidden rounded-2xl shadow-soft hover:shadow-gold transition-all duration-300 hover:scale-105 group">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt}
-                    className="w-full h-auto object-cover"
-                  />
+                  <img src={image.src} alt={image.alt} className="w-full h-auto object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <p className="text-white font-medium">{image.alt}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
           
           <div className="mt-16 text-center">
@@ -187,12 +180,9 @@ const Index = () => {
 
       {/* Recognition Section */}
       <section className="py-20 px-4 md:px-8 relative overflow-hidden">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: 'hsl(270 40% 90%)',
-          }}
-        />
+        <div className="absolute inset-0 opacity-20" style={{
+        background: 'hsl(270 40% 90%)'
+      }} />
         
         <div className="max-w-7xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-16 animate-fade-in">
@@ -200,17 +190,13 @@ const Index = () => {
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {recognitions.map((recognition, index) => (
-              <div
-                key={index}
-                className="glass-effect rounded-2xl p-8 text-center gold-shimmer hover:shadow-gold transition-all duration-300 hover:scale-105 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+            {recognitions.map((recognition, index) => <div key={index} className="glass-effect rounded-2xl p-8 text-center gold-shimmer hover:shadow-gold transition-all duration-300 hover:scale-105 animate-fade-in" style={{
+            animationDelay: `${index * 0.1}s`
+          }}>
                 <p className="text-foreground text-lg font-medium">
                   {recognition}
                 </p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -235,12 +221,9 @@ const Index = () => {
 
       {/* Contact Section */}
       <section className="py-20 px-4 md:px-8 relative overflow-hidden">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: 'hsl(333 72% 94%)',
-          }}
-        />
+        <div className="absolute inset-0 opacity-20" style={{
+        background: 'hsl(333 72% 94%)'
+      }} />
         <div className="absolute inset-0 resin-texture" />
         
         {/* Watermark Logo */}
@@ -254,43 +237,25 @@ const Index = () => {
           </h2>
           
           <div className="space-y-6 mb-12">
-            <a 
-              href="tel:01788505005"
-              className="flex items-center justify-center gap-3 text-xl text-foreground hover:text-gold transition-colors"
-            >
+            <a href="tel:01788505005" className="flex items-center justify-center gap-3 text-xl text-foreground hover:text-gold transition-colors">
               <Phone className="w-6 h-6" />
               <span>01788505005</span>
             </a>
             
-            <a 
-              href="mailto:tasus.creations@gmail.com"
-              className="flex items-center justify-center gap-3 text-xl text-foreground hover:text-gold transition-colors"
-            >
+            <a href="mailto:tasus.creations@gmail.com" className="flex items-center justify-center gap-3 text-xl text-foreground hover:text-gold transition-colors">
               <Mail className="w-6 h-6" />
               <span>tasus.creations@gmail.com</span>
             </a>
           </div>
           
           <div className="flex items-center justify-center gap-6 mb-8">
-            <a 
-              href="#" 
-              className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300"
-              aria-label="Facebook"
-            >
+            <a href="#" className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300" aria-label="Facebook">
               <Facebook className="w-6 h-6 text-foreground" />
             </a>
-            <a 
-              href="#" 
-              className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300"
-              aria-label="Instagram"
-            >
+            <a href="#" className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300" aria-label="Instagram">
               <Instagram className="w-6 h-6 text-foreground" />
             </a>
-            <a 
-              href="#" 
-              className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300"
-              aria-label="YouTube"
-            >
+            <a href="#" className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all duration-300" aria-label="YouTube">
               <Youtube className="w-6 h-6 text-foreground" />
             </a>
           </div>
@@ -303,12 +268,9 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="relative py-12 px-4 overflow-hidden">
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(135deg, hsl(333 72% 84%), hsl(270 40% 77%), hsl(270 50% 60%))',
-          }}
-        />
+        <div className="absolute inset-0" style={{
+        background: 'linear-gradient(135deg, hsl(333 72% 84%), hsl(270 40% 77%), hsl(270 50% 60%))'
+      }} />
         
         {/* Watermark Logo */}
         <div className="absolute inset-0 flex items-center justify-center opacity-10">
@@ -324,8 +286,6 @@ const Index = () => {
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
