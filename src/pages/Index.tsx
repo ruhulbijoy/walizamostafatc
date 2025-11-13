@@ -81,22 +81,42 @@ const Index = () => {
       
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div className="absolute inset-0 opacity-90" style={{
-        background: 'linear-gradient(135deg, hsl(333 72% 84%), hsl(270 40% 77%))'
-      }} />
+        {/* Pastel gradient background with texture */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(135deg, hsl(333 72% 89%) 0%, hsl(270 40% 87%) 100%)'
+        }} />
         <div className="absolute inset-0 resin-texture" />
+        
+        {/* Flowing abstract wavy lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{ stopColor: 'hsl(43 74% 53%)', stopOpacity: 0 }} />
+              <stop offset="50%" style={{ stopColor: 'hsl(43 74% 53%)', stopOpacity: 0.6 }} />
+              <stop offset="100%" style={{ stopColor: 'hsl(43 74% 53%)', stopOpacity: 0 }} />
+            </linearGradient>
+          </defs>
+          <path d="M0,200 Q250,150 500,200 T1000,200" stroke="url(#waveGradient)" strokeWidth="3" fill="none" className="animate-pulse" />
+          <path d="M0,400 Q300,350 600,400 T1200,400" stroke="rgba(255,255,255,0.4)" strokeWidth="2" fill="none" className="animate-pulse" style={{ animationDelay: '1s' }} />
+          <path d="M0,600 Q200,550 400,600 T800,600" stroke="url(#waveGradient)" strokeWidth="2" fill="none" className="animate-pulse" style={{ animationDelay: '2s' }} />
+        </svg>
+        
+        {/* Resin droplet accents */}
+        <div className="resin-droplet" style={{ top: '15%', left: '10%', animationDelay: '0s' }} />
+        <div className="resin-droplet" style={{ top: '70%', right: '15%', animationDelay: '1.5s', width: '30px', height: '30px' }} />
+        <div className="resin-droplet" style={{ bottom: '20%', left: '20%', animationDelay: '3s', width: '35px', height: '35px' }} />
         
         <div className="relative z-10 text-center px-4 animate-fade-in">
           <div className="mb-8 inline-block">
-            <div className="relative w-52 h-52 md:w-72 md:h-72 mx-auto">
-              {/* Outer glow ring */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold/40 via-primary/30 to-secondary/40 blur-2xl animate-pulse" />
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+              {/* Enhanced outer glow with soft shadow */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold/50 via-primary/40 to-secondary/50 blur-3xl animate-pulse profile-glow" />
               
               {/* Glass resin ring with glossy gradient */}
               <div className="absolute inset-0 rounded-full resin-ring" />
               
-              {/* Inner golden border */}
-              <div className="absolute inset-0 rounded-full border-4 border-gold shadow-gold" />
+              {/* Inner golden border with enhanced glow */}
+              <div className="absolute inset-0 rounded-full border-4 border-gold shadow-gold profile-glow" />
               
               {/* Profile image with glossy overlay */}
               <div className="relative w-full h-full rounded-full overflow-hidden p-3">
@@ -111,11 +131,16 @@ const Index = () => {
             Waliza Mostafa
           </h1>
           
+          {/* Wavy line separator under name */}
+          <div className="flex justify-center mb-6">
+            <div className="wavy-line"></div>
+          </div>
+          
           <p className="text-2xl md:text-3xl text-muted-foreground mb-3">
             Resin Artist & Trainer
           </p>
           
-          <p className="text-lg md:text-xl text-accent mb-8 italic">
+          <p className="text-lg md:text-xl gradient-text mb-8 italic font-semibold">
             "Creating art that flows beyond the frame"
           </p>
           

@@ -41,17 +41,22 @@ All colors MUST be HSL.
     
     /* Custom portfolio colors */
     --blush-pink: 333 72% 84%;
+    --primary-pink: 333 72% 89%;
     --lavender: 270 40% 77%;
+    --lavender-light: 270 40% 90%;
     --gold: 43 74% 53%;
+    --gold-light: 43 74% 70%;
     --white: 0 0% 100%;
     
     /* Gradient backgrounds */
-    --gradient-hero: linear-gradient(135deg, hsl(333 72% 84%), hsl(270 40% 77%));
+    --gradient-hero: linear-gradient(135deg, hsl(333 72% 89%) 0%, hsl(270 40% 87%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(43 74% 53%) 0%, hsl(270 40% 65%) 100%);
     --gradient-footer: linear-gradient(135deg, hsl(333 72% 84%), hsl(270 40% 77%), hsl(270 50% 60%));
     
     /* Shadows */
     --shadow-soft: 0 4px 20px rgba(249, 183, 209, 0.3);
     --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.4);
+    --shadow-glow: 0 0 60px rgba(212, 175, 55, 0.5);
     
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -183,5 +188,75 @@ All colors MUST be HSL.
       transform: translateX(10%) translateY(10%) rotate(5deg);
       opacity: 0.7;
     }
+  }
+  
+  @keyframes floatUp {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-20px) scale(1.1);
+      opacity: 0.8;
+    }
+  }
+  
+  @keyframes wavyLine {
+    0%, 100% {
+      d: path("M0,10 Q25,5 50,10 T100,10");
+    }
+    50% {
+      d: path("M0,10 Q25,15 50,10 T100,10");
+    }
+  }
+  
+  .resin-droplet {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50% 50% 50% 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(212, 175, 55, 0.3));
+    backdrop-filter: blur(4px);
+    transform: rotate(-45deg);
+    animation: floatUp 4s ease-in-out infinite;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(43 74% 53%) 0%, hsl(270 40% 65%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .wavy-line {
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, hsl(43 74% 53%), transparent);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .wavy-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: shimmer 2s linear infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+  
+  .profile-glow {
+    box-shadow: 
+      0 0 40px rgba(212, 175, 55, 0.4),
+      0 0 80px rgba(249, 183, 209, 0.3),
+      0 10px 40px rgba(0, 0, 0, 0.1);
   }
 }

@@ -58,9 +58,10 @@ const Navigation = () => {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-foreground hover:text-gold transition-colors duration-200 font-medium"
+                className="relative text-foreground hover:text-gold transition-all duration-300 font-medium group"
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
