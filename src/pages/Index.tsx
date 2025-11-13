@@ -1,4 +1,8 @@
+import { useState } from "react";
 import { ChevronDown, Palette, Clock, Flower2, Waves, Sparkles, Frame, Camera, Store, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Navigation from "@/components/Navigation";
+import GalleryLightbox from "@/components/GalleryLightbox";
 import logoImg from "@/assets/logo.jpg";
 import profileImg from "@/assets/profile.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
@@ -8,7 +12,9 @@ import gallery5 from "@/assets/gallery-5.png";
 import gallery6 from "@/assets/gallery-6.jpg";
 import gallery7 from "@/assets/gallery-7.jpg";
 import gallery9 from "@/assets/gallery-9.jpg";
+
 const Index = () => {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
   const skills = [{
     icon: Palette,
     label: "Resin Casting & Molding"
@@ -36,30 +42,45 @@ const Index = () => {
   }];
   const galleryImages = [{
     src: gallery1,
-    alt: "Resin Art 1"
+    alt: "Ocean Resin Clock",
+    category: "Ocean Series"
   }, {
     src: gallery2,
-    alt: "Resin Art 2"
+    alt: "Floral Preservation Frame",
+    category: "Floral Series"
   }, {
     src: gallery4,
-    alt: "Resin Art 3"
+    alt: "Geode Art Tray",
+    category: "Geode Collection"
   }, {
     src: gallery5,
-    alt: "Resin Art 4"
+    alt: "Marble Coaster Set",
+    category: "Home Décor"
   }, {
     src: gallery6,
-    alt: "Resin Art 5"
+    alt: "Custom Name Plate",
+    category: "Personalized"
   }, {
     src: gallery7,
-    alt: "Resin Art 6"
+    alt: "Resin Table Design",
+    category: "Furniture"
   }, {
     src: gallery9,
-    alt: "Resin Art 7"
+    alt: "Texture Art Piece",
+    category: "Texture Collection"
   }];
   const recognitions = ["Featured on Epoxy Resin Supplier Bangladesh", "Trained 100+ students nationwide", "Founder of Tasu's Art & Crafts Academy"];
+  
+  const scrollToArtworks = () => {
+    const element = document.querySelector("#artworks");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return <div className="min-h-screen bg-background">
+      <Navigation />
+      
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 opacity-90" style={{
         background: 'linear-gradient(135deg, hsl(333 72% 84%), hsl(270 40% 77%))'
       }} />
@@ -67,8 +88,12 @@ const Index = () => {
         
         <div className="relative z-10 text-center px-4 animate-fade-in">
           <div className="mb-8 inline-block">
-            <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-gold shadow-gold mx-auto">
-              <img src={profileImg} alt="Waliza Mostafa" className="w-full h-full object-cover" />
+            <div className="relative w-52 h-52 md:w-72 md:h-72 mx-auto">
+              {/* Glass effect frame */}
+              <div className="absolute inset-0 rounded-full glass-effect border-4 border-gold shadow-gold" />
+              <div className="w-full h-full rounded-full overflow-hidden p-2">
+                <img src={profileImg} alt="Waliza Mostafa" className="w-full h-full object-cover rounded-full" />
+              </div>
             </div>
           </div>
           
@@ -76,13 +101,21 @@ const Index = () => {
             Waliza Mostafa
           </h1>
           
-          <p className="text-2xl md:text-3xl text-muted-foreground mb-6">
+          <p className="text-2xl md:text-3xl text-muted-foreground mb-3">
             Resin Artist & Trainer
           </p>
           
-          <p className="text-xl md:text-2xl font-script text-accent font-semibold">
-            Think Different, Build Different.
+          <p className="text-lg md:text-xl text-accent mb-8 italic">
+            "Creating art that flows beyond the frame"
           </p>
+          
+          <Button 
+            onClick={scrollToArtworks}
+            size="lg"
+            className="bg-gold text-white hover:bg-gold/90 shadow-gold font-medium px-8 py-6 text-lg"
+          >
+            Explore My Artworks
+          </Button>
           
           <div className="mt-12 animate-bounce">
             <ChevronDown className="w-8 h-8 mx-auto text-gold" />
@@ -91,7 +124,7 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 px-4 md:px-8 bg-background">
+      <section id="about" className="py-20 px-4 md:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
@@ -124,8 +157,47 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <section id="artworks" className="py-20 px-4 md:px-8 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-16 animate-fade-in">
+            My Artworks
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryImages.map((image, index) => (
+              <div 
+                key={index} 
+                className="group relative overflow-hidden rounded-2xl shadow-soft hover:shadow-gold transition-all duration-300 cursor-pointer animate-fade-in" 
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={() => setSelectedImage(image)}
+              >
+                <div className="aspect-square overflow-hidden">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <p className="text-white font-semibold text-lg mb-1">{image.alt}</p>
+                  <p className="text-gold text-sm">{image.category}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-16 text-center">
+            <div className="h-1 w-32 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full mx-auto mb-6" />
+            <p className="text-xl md:text-2xl font-script text-accent italic">
+              "Each piece tells a story — handcrafted with resin and passion."
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Skills Section */}
-      <section className="py-20 px-4 md:px-8 relative overflow-hidden">
+      <section id="skills" className="py-20 px-4 md:px-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-30" style={{
         background: 'linear-gradient(180deg, hsl(333 72% 94%), hsl(270 40% 90%))'
       }} />
@@ -149,34 +221,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-20 px-4 md:px-8 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-16 animate-fade-in">
-            My Artworks
-          </h2>
-          
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {galleryImages.map((image, index) => <div key={index} className="break-inside-avoid animate-fade-in" style={{
-            animationDelay: `${index * 0.1}s`
-          }}>
-                <div className="relative overflow-hidden rounded-2xl shadow-soft hover:shadow-gold transition-all duration-300 hover:scale-105 group">
-                  <img src={image.src} alt={image.alt} className="w-full h-auto object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <p className="text-white font-medium">{image.alt}</p>
-                  </div>
-                </div>
-              </div>)}
-          </div>
-          
-          <div className="mt-16 text-center">
-            <div className="h-1 w-32 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full mx-auto mb-6" />
-            <p className="text-xl md:text-2xl font-script text-accent italic">
-              "Each piece tells a story — handcrafted with resin and passion."
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Recognition Section */}
       <section className="py-20 px-4 md:px-8 relative overflow-hidden">
@@ -220,7 +264,13 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4 md:px-8 relative overflow-hidden">
+      <section id="contact" className="py-20 px-4 md:px-8 relative overflow-hidden">
+        {/* Resin wave divider */}
+        <div className="absolute top-0 left-0 right-0 h-16 overflow-hidden">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="hsl(var(--primary-pink))"></path>
+          </svg>
+        </div>
         <div className="absolute inset-0 opacity-20" style={{
         background: 'hsl(333 72% 94%)'
       }} />
@@ -286,6 +336,16 @@ const Index = () => {
           </p>
         </div>
       </footer>
+
+      {/* Lightbox */}
+      {selectedImage && (
+        <GalleryLightbox
+          isOpen={!!selectedImage}
+          onClose={() => setSelectedImage(null)}
+          imageSrc={selectedImage.src}
+          imageAlt={selectedImage.alt}
+        />
+      )}
     </div>;
 };
 export default Index;
