@@ -139,12 +139,11 @@ const Index = () => {
               <div className="absolute inset-0 rounded-full border-4 border-gold shadow-gold profile-glow" />
               
               {/* Profile image with glossy overlay */}
-              <div className="relative w-full h-full rounded-full overflow-hidden p-2">
+              <div className="relative w-full h-full rounded-full overflow-hidden p-3">
                 <img
                   src={profileImg}
                   alt="Waliza Mostafa"
-                  className=" object-cover object-center rounded-full scale-110"
-                  style={{ objectPosition: '50% 58%' }}
+                  className="object-cover object-center rounded-full scale-110"
                 />
                 {/* Resin glossy reflection */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-60 resin-reflection" />
