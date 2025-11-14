@@ -76,7 +76,17 @@ const Index = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  return <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background relative">
+      {/* Global dot-grid pattern overlay */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0 opacity-30"
+        style={{
+          backgroundImage: 'radial-gradient(circle, hsl(var(--gold) / 0.25) 1.5px, transparent 1.5px)',
+          backgroundSize: '20px 20px',
+          backgroundPosition: '0 0'
+        }}
+      />
+      
       <Navigation />
       
       {/* Hero Section */}
