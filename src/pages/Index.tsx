@@ -143,7 +143,7 @@ const Index = () => {
                 <img
                   src={profileImg}
                   alt="Waliza Mostafa"
-                  className=" object-cover object-center rounded-full"
+                  className=" object-cover object-center rounded-full scale-110"
                   style={{ objectPosition: '50% 58%' }}
                 />
                 {/* Resin glossy reflection */}
