@@ -188,7 +188,17 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
-              <img src={profileImg} alt="Waliza Mostafa" className="rounded-2xl shadow-soft w-full max-w-md mx-auto" />
+              <div className="relative inline-block mx-auto">
+                {/* Transparent decorative frame */}
+                <div className="absolute -inset-4 border-2 border-gold/40 rounded-3xl pointer-events-none" />
+                <div className="absolute -inset-6 border border-gold/20 rounded-[2rem] pointer-events-none" />
+                
+                <img 
+                  src={profileImg} 
+                  alt="Waliza Mostafa" 
+                  className="rounded-2xl shadow-soft w-full max-w-md mx-auto relative z-10" 
+                />
+              </div>
             </div>
             
             <div className="animate-fade-in">
