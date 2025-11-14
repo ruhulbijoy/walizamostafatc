@@ -87,6 +87,12 @@ const Index = () => {
         }} />
         <div className="absolute inset-0 resin-texture" />
         
+        {/* Subtle dot-grid pattern overlay */}
+        <div className="absolute inset-0 opacity-30" style={{
+          backgroundImage: 'radial-gradient(circle, hsl(var(--gold)) 1px, transparent 1px)',
+          backgroundSize: '24px 24px'
+        }} />
+        
         {/* Flowing abstract wavy lines */}
         <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -119,8 +125,13 @@ const Index = () => {
               <div className="absolute inset-0 rounded-full border-4 border-gold shadow-gold profile-glow" />
               
               {/* Profile image with glossy overlay */}
-              <div className="relative w-full h-full rounded-full overflow-hidden p-3">
-                <img src={profileImg} alt="Waliza Mostafa" className="w-full h-full object-cover object-center rounded-full scale-110" />
+              <div className="relative w-full h-full rounded-full overflow-hidden p-2">
+                <img 
+                  src={profileImg} 
+                  alt="Waliza Mostafa" 
+                  className="w-full h-full object-cover rounded-full" 
+                  style={{ objectPosition: '50% 35%' }}
+                />
                 {/* Resin glossy reflection */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-60 resin-reflection" />
               </div>
