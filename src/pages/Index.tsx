@@ -143,7 +143,7 @@ const Index = () => {
                 <img
                   src={profileImg}
                   alt="Waliza Mostafa"
-                  className="w-full h-full object-cover rounded-full"
+                  className=" object-cover object-center rounded-full"
                   style={{ objectPosition: '50% 58%' }}
                 />
                 {/* Resin glossy reflection */}
@@ -211,8 +211,8 @@ const Index = () => {
                   I am a professional resin artist and founder of Tasu's Art & Crafts Academy, 
                   specializing in resin décor and handicraft training. Since February 27, 2022, 
                   I have conducted over 100 online and offline resin workshops across Bangladesh, 
-                  teaching techniques such as resin clocks, flower preservation, geode art, and 
-                  nameplate making.
+                  teaching techniques such as resin clocks, flower preservation, geode art,
+                  nameplate making, and so on...
                 </p>
                 
                 <p>
