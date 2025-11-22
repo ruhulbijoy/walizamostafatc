@@ -1,6 +1,13 @@
 import { useState } from "react";
-import { ChevronDown, Palette, Clock, Flower2, Waves, Sparkles, Frame, Camera, Store, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
+import { ChevronDown, Palette, Clock, Flower2, Waves, Sparkles, Frame, Camera, Store, Phone, Mail, Facebook, Instagram, Youtube, Award, Trophy, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Navigation from "@/components/Navigation";
 import GalleryLightbox from "@/components/GalleryLightbox";
 import logoImg from "@/assets/logo.jpg";
@@ -40,36 +47,63 @@ const Index = () => {
     icon: Camera,
     label: "Product Photography & Online Marketing"
   }];
-  const galleryImages = [{
-    src: gallery1,
-    alt: "Ocean Resin Clock",
-    category: "Ocean Series"
-  }, {
-    src: gallery2,
-    alt: "Floral Preservation Frame",
-    category: "Floral Series"
-  }, {
-    src: gallery4,
-    alt: "Geode Art Tray",
-    category: "Geode Collection"
-  }, {
-    src: gallery5,
-    alt: "Marble Coaster Set",
-    category: "Home Décor"
-  }, {
-    src: gallery6,
-    alt: "Custom Name Plate",
-    category: "Personalized"
-  }, {
-    src: gallery7,
-    alt: "Resin Table Design",
-    category: "Furniture"
-  }, {
-    src: gallery9,
-    alt: "Texture Art Piece",
-    category: "Texture Collection"
-  }];
-  const recognitions = ["Featured on Epoxy Resin Supplier Bangladesh", "Trained 100+ students nationwide", "Founder of Tasu's Art & Crafts Academy"];
+  // Portfolio categories with multiple images per category
+  const portfolioCategories = [
+    {
+      title: "Geode Art",
+      description: "Stunning geode-inspired resin pieces with natural stone aesthetics",
+      images: [
+        { src: gallery4, alt: "Blue and Gold Geode Tray" },
+        { src: gallery1, alt: "Ocean Geode Wall Art" },
+        { src: gallery7, alt: "Geode Table Design" },
+      ]
+    },
+    {
+      title: "Coasters",
+      description: "Elegant resin coasters featuring marble and abstract designs",
+      images: [
+        { src: gallery5, alt: "Marble Effect Coaster Set" },
+        { src: gallery4, alt: "Gold-trimmed Coasters" },
+        { src: gallery9, alt: "Abstract Resin Coasters" },
+      ]
+    },
+    {
+      title: "Wall Art & Canvas",
+      description: "Captivating resin art pieces perfect for home décor",
+      images: [
+        { src: gallery1, alt: "Ocean Wave Canvas" },
+        { src: gallery2, alt: "Floral Preservation Art" },
+        { src: gallery6, alt: "Abstract Resin Canvas" },
+      ]
+    },
+    {
+      title: "Trays & Furniture",
+      description: "Functional art pieces that elevate your living space",
+      images: [
+        { src: gallery7, alt: "Resin Coffee Table" },
+        { src: gallery4, alt: "Decorative Serving Tray" },
+        { src: gallery9, alt: "Resin Side Table" },
+      ]
+    }
+  ];
+
+  const recognitions = [
+    {
+      icon: Trophy,
+      title: "Featured Artist",
+      description: "Featured on Epoxy Resin Supplier Bangladesh as a leading resin artist"
+    },
+    {
+      icon: Star,
+      title: "100+ Students Trained",
+      description: "Successfully conducted workshops and trained over 100 students nationwide"
+    },
+    {
+      icon: Award,
+      title: "Academy Founder",
+      description: "Founder of Tasu's Art & Crafts Academy, promoting resin art education"
+    }
+  ];
   
   const scrollToArtworks = () => {
     const element = document.querySelector("#artworks");
@@ -226,37 +260,70 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Portfolio Section - Categorized with Carousels */}
       <section id="artworks" className="py-20 px-4 md:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-16 animate-fade-in">
-            My Artworks
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-4 animate-fade-in">
+            Portfolio
           </h2>
+          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+            Explore my collection of handcrafted resin artworks across different categories
+          </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
+          <div className="space-y-20">
+            {portfolioCategories.map((category, categoryIndex) => (
               <div 
-                key={index} 
-                className="group relative overflow-hidden rounded-2xl shadow-soft hover:shadow-gold transition-all duration-300 cursor-pointer animate-fade-in" 
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => setSelectedImage(image)}
+                key={categoryIndex} 
+                className="animate-fade-in"
+                style={{ animationDelay: `${categoryIndex * 0.15}s` }}
               >
-                <div className="aspect-square overflow-hidden">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                  />
+                <div className="text-center mb-8">
+                  <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-3 uppercase tracking-wide">
+                    {category.title}
+                  </h3>
+                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    {category.description}
+                  </p>
+                  <div className="h-1 w-24 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full mx-auto mt-4" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <p className="text-white font-semibold text-lg mb-1">{image.alt}</p>
-                  <p className="text-gold text-sm">{image.category}</p>
-                </div>
+
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-4">
+                    {category.images.map((image, imageIndex) => (
+                      <CarouselItem key={imageIndex} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                        <div 
+                          className="group relative overflow-hidden rounded-2xl shadow-soft hover:shadow-gold transition-all duration-300 cursor-pointer h-full"
+                          onClick={() => setSelectedImage({ src: image.src, alt: image.alt })}
+                        >
+                          <div className="aspect-square overflow-hidden bg-muted">
+                            <img 
+                              src={image.src} 
+                              alt={image.alt} 
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                            />
+                          </div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <p className="text-white font-semibold text-lg">{image.alt}</p>
+                            <p className="text-gold text-sm mt-1">{category.title}</p>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2 md:-left-12" />
+                  <CarouselNext className="right-2 md:-right-12" />
+                </Carousel>
               </div>
             ))}
           </div>
           
-          <div className="mt-16 text-center">
+          <div className="mt-20 text-center">
             <div className="h-1 w-32 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full mx-auto mb-6" />
             <p className="text-xl md:text-2xl font-script text-accent italic">
               "Each piece tells a story — handcrafted with resin and passion."
@@ -292,24 +359,37 @@ const Index = () => {
 
 
       {/* Recognition Section */}
-      <section className="py-20 px-4 md:px-8 relative overflow-hidden">
+      <section id="recognition" className="py-20 px-4 md:px-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20" style={{
-        background: 'hsl(270 40% 90%)'
-      }} />
+          background: 'hsl(270 40% 90%)'
+        }} />
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-4 animate-fade-in">
             Recognitions & Achievements
           </h2>
+          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+            Celebrating milestones and achievements in resin art education
+          </p>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {recognitions.map((recognition, index) => <div key={index} className="glass-effect rounded-2xl p-8 text-center gold-shimmer hover:shadow-gold transition-all duration-300 hover:scale-105 animate-fade-in" style={{
-            animationDelay: `${index * 0.1}s`
-          }}>
-                <p className="text-foreground text-lg font-medium">
-                  {recognition}
+            {recognitions.map((recognition, index) => (
+              <div 
+                key={index} 
+                className="glass-effect rounded-2xl p-8 text-center gold-shimmer hover:shadow-gold transition-all duration-300 hover:scale-105 animate-fade-in" 
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gold/20 flex items-center justify-center">
+                  <recognition.icon className="w-8 h-8 text-gold" />
+                </div>
+                <h3 className="text-foreground text-xl font-bold mb-3">
+                  {recognition.title}
+                </h3>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  {recognition.description}
                 </p>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
